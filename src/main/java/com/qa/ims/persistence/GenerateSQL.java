@@ -44,7 +44,7 @@ public class GenerateSQL {
 		List <Order> orders = orderDAO.readAll();
 		List<String> data = new ArrayList<String>();
 		for (Order order :orders) {
-			String sqldata = ("insert into `ims`.`orders`(`OrderID`,`CustomerID`) VALUES("+order.getID()+","+order.getCustomerID()+";\r");
+			String sqldata = ("insert into `ims`.`orders`(`OrderID`,`CustomerID`) VALUES("+order.getID()+","+order.getCustomerID()+");\r");
 			data.add(sqldata);
 		}
 		return data;
