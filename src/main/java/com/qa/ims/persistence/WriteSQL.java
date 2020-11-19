@@ -12,7 +12,7 @@ public class WriteSQL {
 	
 	public String SQLText() {
 		try {
-			FileWriter write = new FileWriter("src/main/resources/sql-data.sql");
+			FileWriter write = new FileWriter("C:\\Users\\andre\\IMS-Starter\\src\\main\\resources\\sql-data.sql\\");
 			for(String string:sqlgen.GenerateCustomers()) {
 				write.write(string);
 			}

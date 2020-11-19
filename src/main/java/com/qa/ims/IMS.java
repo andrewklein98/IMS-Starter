@@ -64,10 +64,6 @@ public class IMS {
 					active = this.orders;
 					break;
 				case STOP:
-//					closeout.GenerateCustomers();
-//					closeout.GenerateItems();
-//					closeout.GenerateOrders();
-//					closeout.GenerateOrder_Item();
 					sqlwrite.SQLText();
 					return;
 				default:

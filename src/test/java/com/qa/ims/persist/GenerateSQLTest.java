@@ -85,7 +85,7 @@ public class GenerateSQLTest {
 		orders.add(order2);
 		List<String> data = new ArrayList<String>();
 		for (Order order :orders) {
-			String sqldata = ("insert into `ims`.`orders`(`OrderID`,`CustomerID`) VALUES("+order.getID()+","+order.getCustomerID()+";\r");
+			String sqldata = ("insert into `ims`.`orders`(`OrderID`,`CustomerID`) VALUES("+order.getID()+","+order.getCustomerID()+");\r");
 			data.add(sqldata);
 		}
 		
