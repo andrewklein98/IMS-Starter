@@ -21,26 +21,26 @@ These instructions will get you a copy of the project up and running on your loc
 
 What things you need to install the software and how to install them
 ###### Software to install
-1. [Maven](http://maven.apache.org/download.cgi)
+1. [Maven version 3.6.3](http://maven.apache.org/download.cgi)
 
->Maven is used to build the final Jar file, as well as providing useful test logs
+Maven is used to build the final Jar file, as well as providing useful test logs
 
 2. [JDK version 8](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html)
 
->The JDK standing for Java development kit allows Maven to build the final file, as well as being needed to run a deevelopment envirnment. *Note* Using a higher version of the JDK will stop the final build from working
+The JDK standing for Java development kit allows Maven to build the final file, as well as being needed to run a development environment. *Note Using a higher version of the JDK will stop the final build from working*
 
-3. Some Java Development Environment - [Eclipse](https://www.eclipse.org/downloads/)
+3. Some Java Development Environment, I have used [Eclipse](https://www.eclipse.org/downloads/)
 
->I used eclipse to initially create this project, so I would reccomend that, but any Java Development Environment should feasibly work.
-
-
-4. [MySQLWorkBench](https://dev.mysql.com/downloads/workbench/5.2.html)
+I used eclipse to initially create this project, so I would reccomend that, but any Java Development Environment should feasibly work, **as long as it can use Maven**.
 
 
->MySQLWorkBench is used to set up the SQL server that the project will communicate with, as well as being useful for testing sql statments before adding them to the java code
+4. [MySQL WorkBench](https://dev.mysql.com/downloads/workbench/5.2.html)
 
 
-### Installing
+MySQL WorkBench is used to set up the SQL server that the project will communicate with, as well as being useful for testing sql statments before adding them to the java code
+
+
+### Installation and steup
 
 All of the above are executable installers and can simply be run, however there are some initial setup steps that must be done as well
 
@@ -50,15 +50,11 @@ To use java properly the file pathway and environment variables need to be set u
 ##### Maven
 The same process needs to be done with maven to ensure that it can generate the final .jar file. [Guide](https://maven.apache.org/install.html)
 
-
-### Setup
-There are some initial steps that need to be taken once everything has been installed:
-
-##### Add Maven to Eclipse
+##### Add Maven to Eclipse or you IDE
 If you are using Eclipse, you may need to add Maven to it, this can be done by following this [guide](http://roufid.com/how-to-install-maven-on-eclipse-ide/).
 
 
-##### MySQLWorkBench
+##### MySQL WorkBench
 Once the software has been installed, you will need to create a new database server, with the name "ims".[Guide](https://docs.oracle.com/cd/E17952_01/workbench-en/wb-getting-started-tutorial-create-connection.html)
 Once this has been done, open up the connection in workbench by double clicking on it, then run the following code:
 ```
@@ -207,15 +203,24 @@ It then checks that we are getting the correct output, as well as how many times
 ### Creating the .jar file
 To create the .jar file, navigate to the location of IMS-Starter in your file explorer, and open it
 Open windows powershell in this location.
-type <mvn clean package>
+
+Type "mvn clean package"
+
 This tells maven to create the jar file. It will run the tests, and complie the final file, which could take some time, so be patient!
+
 Once this has completed there will be a new file in you IMS-Starter called target, which will have two .jar files, one with the dependencies, and one without.
 
 To run the .jar file, copy the file pathway of the one with dependencies and enter into the cmd the following:
 
->java -jar "<your-file-pathway>"
+>java -jar "your-file-pathway"
 
  This will run the system in the command line.
+
+##Acronyms
+* DAO - Database Access Object: A java class that acceses the database
+* JDK - Java Development Kit
+* IDE - Integrated development environment: Where the actual coding is being done
+* CMD - The command line interface
 
 
 ## Built With
@@ -226,7 +231,7 @@ To run the .jar file, copy the file pathway of the one with dependencies and ent
 
 ## Versioning
 
-* [Github](https://github.com/) - (How else dud you even find this?)
+* [Github](https://github.com/) - (How else did you even find this?)
 
 ## Authors
 
