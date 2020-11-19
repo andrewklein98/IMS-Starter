@@ -27,7 +27,7 @@ What things you need to install the software and how to install them
 
 2. [JDK version 8](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html)
 
->The JDK standing for Java development kit allows Maven to build the final file, as well as being needed to run a deevelopment envirnment
+>The JDK standing for Java development kit allows Maven to build the final file, as well as being needed to run a deevelopment envirnment. *Note* Using a higher version of the JDK will stop the final build from working
 
 3. Some Java Development Environment - [Eclipse](https://www.eclipse.org/downloads/)
 
@@ -42,19 +42,22 @@ What things you need to install the software and how to install them
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+All of the above are executable installers and can simply be run, however there are some initial setup steps that must be done as well
 
-Say what the step will be
+###### The JDK
+To use java properly the file pathway and environment variables need to be set up. This [guide](https://www.baeldung.com/java-home-on-windows-7-8-10-mac-os-x-linux) details how this can be done.
 
-```
-Give the example
-```
+###### Maven
+The same process needs to be done with maven to ensure that it can generate the final .jar file. [guide](https://maven.apache.org/install.html)
 
-And repeat
+###### MySQLWorkBench
+Once the software has been installed, you will need to create a new database server, with the name "ims".[guide](https://docs.oracle.com/cd/E17952_01/workbench-en/wb-getting-started-tutorial-create-connection.html)
+Once this has been done, open up the connection in workbench by double clicking on it, then run the following code:
+```
+CREAT SCHEMA ims
+```
+This creates the databse that the project will look at to get/store data.
 
-```
-until finished
-```
 
 End with an example of getting some data out of the system or using it for a little demo
 
