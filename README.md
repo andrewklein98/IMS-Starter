@@ -48,18 +48,106 @@ All of the above are executable installers and can simply be run, however there 
 To use java properly the file pathway and environment variables need to be set up. This [guide](https://www.baeldung.com/java-home-on-windows-7-8-10-mac-os-x-linux) details how this can be done.
 
 ###### Maven
-The same process needs to be done with maven to ensure that it can generate the final .jar file. [guide](https://maven.apache.org/install.html)
+The same process needs to be done with maven to ensure that it can generate the final .jar file. [Guide](https://maven.apache.org/install.html)
+
+##### Add Maven to Eclipse
+If you are using Eclipse, you may need to add Maven to it, this can be done by following this [guide](http://roufid.com/how-to-install-maven-on-eclipse-ide/).
+
 
 ###### MySQLWorkBench
-Once the software has been installed, you will need to create a new database server, with the name "ims".[guide](https://docs.oracle.com/cd/E17952_01/workbench-en/wb-getting-started-tutorial-create-connection.html)
+Once the software has been installed, you will need to create a new database server, with the name "ims".[Guide](https://docs.oracle.com/cd/E17952_01/workbench-en/wb-getting-started-tutorial-create-connection.html)
 Once this has been done, open up the connection in workbench by double clicking on it, then run the following code:
 ```
 CREAT SCHEMA ims
 ```
 This creates the databse that the project will look at to get/store data.
 
+### Opening the project in Eclipse
+Once you have installed all of the above, you're ready to open up the project!
+Open up eclipse, and go to file in the top right hand corner.
+Halfway down the file menu, select import, the icon is a little arrow into a tray.
+In the file menu that comes up, select Maven, and then Existing Maven Project.
+Click next.
+Navigate to where you have dowloaded the project, and then it should be finished!
 
-End with an example of getting some data out of the system or using it for a little demo
+### Update the SQL generation file
+Once piece of code that needs to be changed is the part that logs the sql data.
+Navigate to WriteSQL. This is in the package com.qa.ims.persistence, under src/main/java.
+There should be a file writer on line 15 that looks like this:
+```
+public String SQLText() {
+		try {
+			FileWriter write = new FileWriter("C:\\Users\\andre\\IMS-Starter\\src\\main\\resources\\sql-data.sql\\");
+			for(String string:sqlgen.GenerateCustomers()) {
+				write.write(string);
+			}
+```
+Change it so that the referenced file is the location on your computer. It should look like this:
+```
+FileWriter write = new FileWriter("<your_filename>");
+
+```
+*Note - You might see that there are a number of backslashes in the file path, this is because it is an escape character in java, so needs to be added to tell it to use the backslash in the string*
+
+### Using the project
+When you click run the project will ask you for your username and password, these are the user name and password that you set for the SQL database.
+It will then ask you what object you would like to deal with, like this:
+```
+Which entity would you like to use?
+CUSTOMER: Information about customers
+ITEM: Individual Items
+ORDER: Purchases of items
+STOP: To close the application
+```
+Type in one of these, for example let's say that we want to add a new customer, which will bring us to this menu:
+```
+What would you like to do with customer:
+CREATE: To save a new entity into the database
+READ: To read an entity from the database
+UPDATE: To change an entity already in the database
+DELETE: To remove an entity from the database
+RETURN: To return to domain selection
+```
+To create a new customer, type in **CREATE**. It will then ask for a first name and surname:
+```
+Please enter a first name
+john
+Please enter a surname
+doe
+Customer created
+```
+This will then take us back to the previous menu. To view all the customers currently in the system, we type in **READ**:
+```
+read
+ID:1 first name:tom surname:smith
+ID:2 first name:jordan surname:harrison
+ID:3 first name:john surname:doe
+```
+By default there are two customers in the system, as well as two items and orders.
+To delete these, we type in _**DELETE**_ and the ID of the customer we want to delete:
+```
+delete
+Please enter the id of the customer you would like to delete
+1
+```
+This will delete any orders associated with the customer as well. If we delete an item, the associated orders are also deleted as well.
+To exit the program, we simply type **RETURN** and then **STOP**, which will exit.
+```
+What would you like to do with customer:
+CREATE: To save a new entity into the database
+READ: To read an entity from the database
+UPDATE: To change an entity already in the database
+DELETE: To remove an entity from the database
+RETURN: To return to domain selection
+return
+Which entity would you like to use?
+CUSTOMER: Information about customers
+ITEM: Individual Items
+ORDER: Purchases of items
+STOP: To close the application
+stop
+SO LONG!
+```
 
 ## Running the tests
 
