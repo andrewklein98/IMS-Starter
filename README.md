@@ -156,7 +156,7 @@ SO LONG!
 There are a number of automated tests in this system, which ensure that the functionality is working. To run these tests, navigate to src/test/java in the IDE. 
 Right click on it, and select run as JUnit test. To get the coverage, select Coverage as JUnit test, it should be as in the image below:
 
-![coverage information}](/images/coverage)
+![coverage information}](images/coverage.PNG)
 
 ### Unit Tests 
 
