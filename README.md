@@ -156,7 +156,7 @@ SO LONG!
 There are a number of automated tests in this system, which ensure that the functionality is working. To run these tests, navigate to src/test/java in the IDE. 
 Right click on it, and select run as JUnit test. To get the coverage, select Coverage as JUnit test, it should be as in the image below:
 
-![coverage information}](images/coverage.PNG)
+![coverage information](images/coverage.PNG)
 
 ### Unit Tests 
 
@@ -234,6 +234,9 @@ To run the .jar file, copy the file pathway of the one with dependencies and ent
 ## Versioning
 
 * [Github](https://github.com/) - (How else did you even find this?)
+
+![version image](/images/version_control.PNG)
+
 
 ## Authors
 
