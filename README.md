@@ -154,11 +154,13 @@ SO LONG!
 ## Running the tests
 
 There are a number of automated tests in this system, which ensure that the functionality is working. To run these tests, navigate to src/test/java in the IDE. 
-Right click on it, and select run as JUnit test. To get the coverage, select Coverage as JUnit test.
+Right click on it, and select run as JUnit test. To get the coverage, select Coverage as JUnit test, it should be as in the image below:
+
+![coverage information}](/images/coverage)
 
 ### Unit Tests 
 
-The unit tests are the DAO tests. They test wether the DAOs are giving the expected responses, and working properly. 
+The unit tests are the moslty DAO tests, using JUnit. They test whether the DAOs are giving the expected responses, and working properly. 
 For example, to test the reading functionality of the Cusomter DAO:
 
 ```
