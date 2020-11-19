@@ -21,24 +21,24 @@ These instructions will get you a copy of the project up and running on your loc
 
 What things you need to install the software and how to install them
 ###### Software to install
-1. [Maven] (http://maven.apache.org/download.cgi)
-```
-Maven is used to build the final Jar file, as well as providing useful test logs
-```
-2. [JDK version 8] (https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html)
-```
-The JDK standing for Java development kit allows Maven to build the final file, as well as being needed to run a deevelopment envirnment
-```
-3. Some Java Development Environment - [Eclipse] (https://www.eclipse.org/downloads/)
-```
-I use eclipse to initially create this project, so I would reccomend that, but any Java Development Environment should feasibly work.
-```
+1. [Maven](http://maven.apache.org/download.cgi)
 
-4. [MySQLWorkBench] (https://dev.mysql.com/downloads/workbench/5.2.html)
+>Maven is used to build the final Jar file, as well as providing useful test logs
 
-```
-MySQLWorkBench is used to set up the SQL server that the project will communicate with, as well as being useful for testing sql statments before adding them to the java code
-```
+2. [JDK version 8](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html)
+
+>The JDK standing for Java development kit allows Maven to build the final file, as well as being needed to run a deevelopment envirnment
+
+3. Some Java Development Environment - [Eclipse](https://www.eclipse.org/downloads/)
+
+>I used eclipse to initially create this project, so I would reccomend that, but any Java Development Environment should feasibly work.
+
+
+4. [MySQLWorkBench](https://dev.mysql.com/downloads/workbench/5.2.html)
+
+
+>MySQLWorkBench is used to set up the SQL server that the project will communicate with, as well as being useful for testing sql statments before adding them to the java code
+
 
 ### Installing
 
