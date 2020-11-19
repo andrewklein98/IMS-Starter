@@ -44,17 +44,21 @@ What things you need to install the software and how to install them
 
 All of the above are executable installers and can simply be run, however there are some initial setup steps that must be done as well
 
-###### The JDK
+##### The JDK
 To use java properly the file pathway and environment variables need to be set up. This [guide](https://www.baeldung.com/java-home-on-windows-7-8-10-mac-os-x-linux) details how this can be done.
 
-###### Maven
+##### Maven
 The same process needs to be done with maven to ensure that it can generate the final .jar file. [Guide](https://maven.apache.org/install.html)
+
+
+### Setup
+There are some initial steps that need to be taken once everything has been installed:
 
 ##### Add Maven to Eclipse
 If you are using Eclipse, you may need to add Maven to it, this can be done by following this [guide](http://roufid.com/how-to-install-maven-on-eclipse-ide/).
 
 
-###### MySQLWorkBench
+##### MySQLWorkBench
 Once the software has been installed, you will need to create a new database server, with the name "ims".[Guide](https://docs.oracle.com/cd/E17952_01/workbench-en/wb-getting-started-tutorial-create-connection.html)
 Once this has been done, open up the connection in workbench by double clicking on it, then run the following code:
 ```
@@ -62,15 +66,15 @@ CREAT SCHEMA ims
 ```
 This creates the databse that the project will look at to get/store data.
 
-### Opening the project in Eclipse
-Once you have installed all of the above, you're ready to open up the project!
+
+##### Opening the project in Eclipse
 Open up eclipse, and go to file in the top right hand corner.
 Halfway down the file menu, select import, the icon is a little arrow into a tray.
 In the file menu that comes up, select Maven, and then Existing Maven Project.
 Click next.
 Navigate to where you have dowloaded the project, and then it should be finished!
 
-### Update the SQL generation file
+##### Update the SQL generation file
 Once piece of code that needs to be changed is the part that logs the sql data.
 Navigate to WriteSQL. This is in the package com.qa.ims.persistence, under src/main/java.
 There should be a file writer on line 15 that looks like this:
@@ -84,10 +88,10 @@ public String SQLText() {
 ```
 Change it so that the referenced file is the location on your computer. It should look like this:
 ```
-FileWriter write = new FileWriter("<your_filename>");
+FileWriter write = new FileWriter("<your_file_pathway>");
 
 ```
-*Note - You might see that there are a number of backslashes in the file path, this is because it is an escape character in java, so needs to be added to tell it to use the backslash in the string*
+*Note - You might see that there are a number of backslashes \ in the file path, this is because it is an escape character in java, so we need to preceed a \ with a \ to tell java to use the backslash in the string, and not ignore the next character*
 
 ### Using the project
 When you click run the project will ask you for your username and password, these are the user name and password that you set for the SQL database.
@@ -101,6 +105,7 @@ STOP: To close the application
 ```
 Type in one of these, for example let's say that we want to add a new customer, which will bring us to this menu:
 ```
+customer
 What would you like to do with customer:
 CREATE: To save a new entity into the database
 READ: To read an entity from the database
@@ -110,6 +115,7 @@ RETURN: To return to domain selection
 ```
 To create a new customer, type in **CREATE**. It will then ask for a first name and surname:
 ```
+create
 Please enter a first name
 john
 Please enter a surname
@@ -151,30 +157,51 @@ SO LONG!
 
 ## Running the tests
 
-Explain how to run the automated tests for this system. Break down into which tests and what they do
+There are a number of automated tests in this system, which ensure that the functionality is working. To run these tests, navigate to src/test/java in the IDE. 
+Right click on it, and select run as JUnit test. To get the coverage, select Coverage as JUnit test.
 
 ### Unit Tests 
 
-Explain what these tests test, why and how to run them
+The unit tests are the DAO tests. They test wether the DAOs are giving the expected responses, and working properly. 
+For example, to test the reading functionality of the Cusomter DAO:
 
 ```
-Give an example
+@Test
+public void testReadAll() {
+	List<Customer> expected = new ArrayList<>();
+	expected.add(new Customer(1L, "tom", "smith"));
+	expected.add(new Customer(2L, "jordan", "harrison"));
+	assertEquals(expected, DAO.readAll());
+}
 ```
+Given some dummy test data, this tells JUnit that the expected result is a list of two customers with the above values.
+The dummy test data is located in IMS-Starter/src/test/resources/sql-data.sql.
+
 
 ### Integration Tests 
-Explain what these tests test, why and how to run them
+Integration tests test how well the bits of the project fit together, and that they are giving the correct outputs.
+These are done using Mockito to create "fake" outputs from functions that have alread been tested to compare with what should be happening.
+They are located in the controller tests, and can be run on that. 
+For example, to test the customer controller creation function:
 
 ```
-Give an example
-```
+@Test
+public void testCreate() {
+	final String F_NAME = "barry", L_NAME = "scott";
+	final Customer created = new Customer(F_NAME, L_NAME);
 
-### And coding style tests
+	Mockito.when(utils.getString()).thenReturn(F_NAME, L_NAME);
+	Mockito.when(dao.create(created)).thenReturn(created);
 
-Explain what these tests test and why
+	assertEquals(created, controller.create());
 
+	Mockito.verify(utils, Mockito.times(2)).getString();
+	Mockito.verify(dao, Mockito.times(1)).create(created);
+}
 ```
-Give an example
-```
+This tells JUnit that when it runs utils.getString to return the variables that we have defined above.
+It does a similar thing for dao.create() but returns the customer we made.
+It then checks that we are getting the correct output, as well as how many times our mocks have run.
 
 ## Deployment
 
