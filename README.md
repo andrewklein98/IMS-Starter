@@ -204,18 +204,33 @@ It does a similar thing for dao.create() but returns the customer we made.
 It then checks that we are getting the correct output, as well as how many times our mocks have run.
 
 ## Deployment
+### Creating the .jar file
+To create the .jar file, navigate to the location of IMS-Starter in your file explorer, and open it
+Open windows powershell in this location.
+type <mvn clean package>
+This tells maven to create the jar file. It will run the tests, and complie the final file, which could take some time, so be patient!
+Once this has completed there will be a new file in you IMS-Starter called target, which will have two .jar files, one with the dependencies, and one without.
 
-Add additional notes about how to deploy this on a live system
+To run the .jar file, copy the file pathway of the one with dependencies and enter into the cmd the following:
+
+>java -jar "<your-file-pathway>"
+
+ This will run the system in the command line.
+
 
 ## Built With
 
+* [Eclipse](https://www.eclipse.org/) - Java IDE
 * [Maven](https://maven.apache.org/) - Dependency Management
+* [MySQLWorkbench](https://www.mysql.com/products/workbench/) - SQL server management
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning.
+* [Github](https://github.com/) - (How else dud you even find this?)
 
 ## Authors
+
+* **Andrew Klein** - *Finalisation*  - [andrewklein](https://github.com/andrewklein98)
 
 * **Chris Perrins** - *Initial work* - [christophperrins](https://github.com/christophperrins)
 
@@ -227,6 +242,5 @@ This project is licensed under the MIT license - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* Piers Barber for putting up with all the questions
+* Aswene Sivaraj for the same
