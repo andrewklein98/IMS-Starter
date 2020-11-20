@@ -210,7 +210,11 @@ Type "mvn clean package"
 
 This tells maven to create the jar file. It will run the tests, and complie the final file, which could take some time, so be patient!
 
-Once this has completed there will be a new file in you IMS-Starter called target, which will have two .jar files, one with the dependencies, and one without.
+Once this has completed there will be a new file in you IMS-Starter called target, which will have two .jar files, one with the dependencies, and one without. teh
+
+For proper output of the .jar file in the cmd, first enter the line:
+
+>chcp 1252
 
 To run the .jar file, copy the file pathway of the one with dependencies and enter into the cmd the following:
 
